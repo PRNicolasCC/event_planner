@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    {% if user.es_proveedor %}
+    <a href="{% url 'crear_servicio' %}">Crear servicio</a>
+{% endif %}
+<head>
+    <title>Servicios</title>
+</head>
+<body>
+    <a href="{% url 'logout' %}">Cerrar sesión</a>
+    <h2>Servicios disponibles</h2>
+
+{% for servicio in servicios %}
+    <div style="border:1px solid #ccc; padding:10px; margin:10px;">
+        <h3>{{ servicio.nombre }}</h3>
+        <p>{{ servicio.descripcion }}</p>
+        <p><strong>📍 Ciudad:</strong> {{ servicio.ciudad }}</p>
+        <p><strong>💰 Precio:</strong> ${{ servicio.precio_referencia }}</p>
+        <p><strong>📞 Contacto:</strong> {{ servicio.telefono_contacto }}</p>
+    </div>
+{% endfor %}
+</body>
+</html>
